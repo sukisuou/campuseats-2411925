@@ -1,4 +1,4 @@
-function VendorCard({ vendor, isSelected, onSelect}){
+function VendorCard({ vendor, isSelected, onSelect }){
     return (
         <button
             type = "button"

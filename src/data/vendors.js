@@ -21,7 +21,7 @@ const vendors = [
         openHours: '8:00 am - 9:00 pm',
         isOpen: true,
         menu: [
-            { id: 'cf-cake-1', name: 'Cat Cupcake', description: 'cupcake made with... nah, it just looks like a cat', 
+            { id: 'cf-cake-1', name: 'Cat Cupcake', description: 'cupcake made with... just cat-shaped', 
                 price: 9, category: 'cake', available: true },
             { id: 'cf-bev-1', name: 'Banana Milkshake', description: 'blended banana and milk', 
                 price: 3.5, category: 'drinks', available: true },
