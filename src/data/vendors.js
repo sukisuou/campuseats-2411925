@@ -1,3 +1,5 @@
+//why not keep...?
+
 const vendors = [
     {
         id: 'sec-rec',
