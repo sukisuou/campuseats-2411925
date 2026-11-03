@@ -61,6 +61,10 @@ body { margin: 0; }
   width: 100%; padding: 0.55rem; border: 0; border-radius: 8px;
   background: var(--green); color: #fff; font-weight: 600; cursor: pointer;
 }
+.btn_2 {
+  width: auto; padding: 0.55rem; border: 1; border-color:#616e7c; border-radius: 4px;
+  background: var(--green); color: #fff; font-weight: 600; cursor: pointer;
+}
 .btn:disabled { background: #c5cbd3; cursor: not-allowed; }
 
 .footer { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.85rem; }

@@ -6,6 +6,8 @@ export const DISCOUNT = 20
 
 function DailySpecial(){
     const [timeLeft, setTimeLeft] = useState('')
+    const [count, setCount] = useState(0)
+    const [isShaking, setIsShaking] = useState(false)
 
     useEffect(() => {
         function updateCountdown(){
@@ -34,9 +36,47 @@ function DailySpecial(){
         return () => clearInterval(timerId) //cleanup
     }, [])
 
+    const card_style = {
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: '12px',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.15)' 
+    }
+
+    const waguri_style = {
+        width: '48px', 
+        objectFit: 'contain', 
+        border: '2px solid #00685E', 
+        borderRadius: '12px', 
+        boxShadow: '0 4px 8px rgba(0,0,0,0.15)'
+    }
+    const button_style = {
+        marginLeft: '10px', 
+        display: 'inline-block', 
+        position: 'relative',
+        transform: isShaking ? 'rotate(-12deg) scale(7.0)' : 'rotate(0deg) scale(1)',
+        transition: 'transform 0.1s ease'
+    }
+
+    const buttonHype = () => {
+        setCount(prev => prev + 1)
+        setIsShaking(true)
+        setTimeout(() => setIsShaking(false), 150)
+    }
+
     return (
-        <div className = "card">
-            Daily Special: <strong>{DISCOUNT}%</strong> off all drinks! Ends in: <strong>{timeLeft}</strong>
+        <div className = "card" style={card_style}>
+            <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
+            <div>
+                🎉 Daily Special: <strong>{DISCOUNT}%</strong> off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
+                Click to hype it up!
+                <button
+                    className = "btn_2"
+                    key = {count}
+                    style = {button_style} 
+                    onClick = {buttonHype}
+                >yooooooo ({count})</button>
+            </div>
         </div>
     )
 }

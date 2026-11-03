@@ -1,7 +1,9 @@
 function Header({ cartCount, onShowMenu, onShowCart }) {
     return (
         <header className = "header">
-        <h1 className = "logo">CampusEats</h1>
+        <h1 className = "logo">
+            CampusEats
+        </h1>
         <nav className = "nav">
         <button type = "button" className = "link btn" onClick = {onShowMenu}>Vendors</button>
         <button type = "button" className = "link cart btn" onClick = {onShowCart}>
@@ -11,6 +13,5 @@ function Header({ cartCount, onShowMenu, onShowCart }) {
         </header>
     )
 }
-
 
 export default Header
