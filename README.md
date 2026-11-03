@@ -18,3 +18,5 @@ If you are developing a production application, we recommend using TypeScript wi
 Vendors Used:
 - 2416015
 - 2418733
+
+Firebase project ID: campuseats-2411925 
