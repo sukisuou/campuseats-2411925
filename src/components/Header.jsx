@@ -1,14 +1,25 @@
-function Header({ cartCount, onShowMenu, onShowCart }) {
+// no more button apparently
+import { NavLink } from 'react-router'
+import { useCart } from '../hooks/useCart.js'
+
+function Header() {
+    const { count } = useCart()
+
     return (
         <header className = "header">
         <h1 className = "logo">
             CampusEats
         </h1>
         <nav className = "nav">
-        <button type = "button" className = "link btn" onClick = {onShowMenu}>Vendors</button>
-        <button type = "button" className = "link cart btn" onClick = {onShowCart}>
-            Cart <span className = "badge">{cartCount}</span>
-        </button>
+            <NavLink to = "/" end className = "link btn">
+                Vendors
+            </NavLink>
+            <NavLink to = "/orders" className = "link btn">
+                Orders
+            </NavLink>
+            <NavLink to = "/cart" className = "link cart btn">
+                Cart <span className = "badge">{count}</span>
+            </NavLink>
         </nav>
         </header>
     )

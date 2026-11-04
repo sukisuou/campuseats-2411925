@@ -15,7 +15,7 @@ function MenuItemCard({ item, onAdd }) {
                         <span className="muted" style={{ textDecoration: 'line-through', marginRight: '0.5rem' }}>
                             RM {item.price.toFixed(2)}
                         </span>
-                        <span>RM {finalPrice.toFixed(2)}</span>
+                        <span>🔥RM {finalPrice.toFixed(2)}</span>
                     </>
                 ) : (`RM ${item.price.toFixed(2)}`)}
             </p>

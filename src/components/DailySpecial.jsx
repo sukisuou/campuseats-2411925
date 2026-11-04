@@ -8,6 +8,7 @@ function DailySpecial(){
     const [timeLeft, setTimeLeft] = useState('')
     const [count, setCount] = useState(0)
     const [isShaking, setIsShaking] = useState(false)
+    const [showTada, setShowTada] = useState(false)
 
     useEffect(() => {
         function updateCountdown(){
@@ -36,6 +37,9 @@ function DailySpecial(){
         return () => clearInterval(timerId) //cleanup
     }, [])
 
+
+    
+    // funsies
     const card_style = {
         display: 'flex', 
         alignItems: 'center', 
@@ -54,30 +58,55 @@ function DailySpecial(){
         marginLeft: '10px', 
         display: 'inline-block', 
         position: 'relative',
-        transform: isShaking ? 'rotate(-12deg) scale(7.0)' : 'rotate(0deg) scale(1)',
-        transition: 'transform 0.1s ease'
+        animation: 'buttonShake 0.15s ease-in-out'
     }
 
     const buttonHype = () => {
-        setCount(prev => prev + 1)
+        setCount(prev => {
+            const next = prev + 1
+            if(next > 0 && next % 100 === 0){
+                setShowTada(true)
+                setTimeout(() => setShowTada(false), 1600)
+            }
+            return next
+        })
         setIsShaking(true)
         setTimeout(() => setIsShaking(false), 150)
     }
 
     return (
-        <div className = "card" style={card_style}>
-            <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
-            <div>
-                🎉 Daily Special: <strong>{DISCOUNT}%</strong> off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
-                Click to hype it up!
-                <button
-                    className = "btn_2"
-                    key = {count}
-                    style = {button_style} 
-                    onClick = {buttonHype}
-                >yooooooo ({count})</button>
+        <>
+            {showTada && (
+                <div style={{
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: '3.5rem',
+                    fontWeight: 'bold',
+                    color: '#ff0055',
+                    textShadow: '0 0 20px rgba(255, 0, 85, 0.6), 2px 2px 0 #fff',
+                    zIndex: 99999,
+                    pointerEvents: 'none',
+                    animation: 'tadaAnim 1.6s ease-in-out'
+                }}>
+                    🔥 FYEEEE! 🔥
+                </div>
+            )}
+            <div className = "card" style={card_style}>
+                <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
+                <div>
+                    🎉 Daily Special: <strong>{DISCOUNT}%</strong> off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
+                    Click to hype it up!
+                    <button
+                        className = "btn_2"
+                        key = {count}
+                        style = {button_style} 
+                        onClick = {buttonHype}
+                    >yooooooo ({count})</button>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

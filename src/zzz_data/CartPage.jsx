@@ -6,7 +6,6 @@ function CartPage({ cart, onChangeQty, onRemove, onPlaceOrder }) {
         return <p className="muted">Your cart is empty. Pick something from a menu first.</p>
     }
 
-    // TODO: derive with cart.reduce(...), never store it in state
     const total = cart.reduce((sum, line) => {
         return sum + (line.item.price * line.qty)
     }, 0)

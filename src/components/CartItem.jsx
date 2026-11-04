@@ -13,7 +13,7 @@ function CartItem({ line, onChangeQty, onRemove }) {
                 <button type="button" onClick={() => onChangeQty(item.id, 1)}>+</button>
             </div>
             <p className="line-total">RM {(item.price * qty).toFixed(2)}</p>
-            <button type="button" className="link danger" onClick={() => onRemove(item.id)}>Remove</button>
+            <button type="button" className="btn-danger" onClick={() => onRemove(item.id)}>Remove</button>
         </li>
     )
 }
