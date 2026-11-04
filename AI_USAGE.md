@@ -23,3 +23,13 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
     3) help with state management in EXPLAIN.md
 - What I kept, changed or rejected, and why: mainly following the structure given by the AI, removing certain fluff (`Object.keys()`, `?.`)
 - One thing the AI got wrong and how I fixed it: -
+
+## Week 4
+- Tool(s): Google Gemini
+- What I asked for:
+    1) how to create orders page
+    2) which parts in App should i modularize
+    3) help me fix some css
+    4) how to use hooks and contexts in pages
+- What I kept, changed or rejected, and why: mostly all, learnt each components and their functions, and the `OrdersPage.jsx` displaying with orders details (id, items, ...details)
+- One thing the AI got wrong and how I fixed it: Gemini only suggested flex-end, while the total never aligned with the prices, so i later added marginRight offset of 30px (somehow aligns 🤔) 
