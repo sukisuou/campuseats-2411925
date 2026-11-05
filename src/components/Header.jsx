@@ -3,7 +3,7 @@ import { NavLink } from 'react-router'
 import { useCart } from '../hooks/useCart.js'
 
 function Header() {
-    const { count } = useCart()
+    const { count, orders } = useCart()
 
     return (
         <header className = "header">
@@ -15,9 +15,9 @@ function Header() {
                 Vendors
             </NavLink>
             <NavLink to = "/orders" className = "link btn">
-                Orders
+                Orders <span className = "badge">{orders.length}</span>
             </NavLink>
-            <NavLink to = "/cart" className = "link cart btn">
+            <NavLink to = "/cart" className = "link btn">
                 Cart <span className = "badge">{count}</span>
             </NavLink>
         </nav>

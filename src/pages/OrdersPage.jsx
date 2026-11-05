@@ -18,7 +18,7 @@ export function OrdersPage() {
             <h2>Orders</h2>
             <div className = "grid">
                 {orders.map((order) => (
-                    <div key={order.id} className="card">
+                    <div key={order.id} className="card order-card">
                         <p><strong>Order #{order.id}</strong></p>
                         <p className = "muted">
                             {new Date(order.createdAt).toLocaleDateString()}

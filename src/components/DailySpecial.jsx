@@ -58,7 +58,7 @@ function DailySpecial(){
         marginLeft: '10px', 
         display: 'inline-block', 
         position: 'relative',
-        animation: 'buttonShake 0.15s ease-in-out'
+        animation: count > 0 ? 'buttonShake 0.15s ease-in-out' : 'none'
     }
 
     const buttonHype = () => {
