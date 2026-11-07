@@ -13,7 +13,7 @@ function VendorCard({ vendor }){
                 <p className = "muted">Open: {vendor.openHours}</p>
                 <span className = {vendor.isOpen ? 'status open' : 'status closed'}>
                     {vendor.isOpen ? 'Open now' : 'Closed'}
-                </span>
+                </span> 
             </div>
         </Link>
     )

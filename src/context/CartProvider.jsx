@@ -14,8 +14,7 @@ export function CartProvider({ children }) {
             const existing = prev.find((line) => line.item.id === item.id)
             if (existing) {
             // Already in the cart: copy every line, and add 1 to the matching one
-            return prev.map((line) =>
-                line.item.id === item.id ? { ...line, qty: line.qty + 1 } : line)
+                return prev.map((line) => line.item.id === item.id ? { ...line, qty: line.qty + 1 } : line)
             }
 
             return [...prev, { item, qty: 1 }] // new line
