@@ -50,7 +50,6 @@ function DailySpecial(){
         gap: '12px',
         boxShadow: '0 4px 8px rgba(0,0,0,0.15)' 
     }
-
     const waguri_style = {
         width: '48px', 
         objectFit: 'contain', 

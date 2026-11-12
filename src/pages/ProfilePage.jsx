@@ -2,11 +2,12 @@
 // using LocalStorage for now, not Firestore yet
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 export function ProfilePage(){
-    const { user } = useAuth()
+    const { user, logout } = useAuth()
         
     // set a profile description/bio, hehe
     const [bio, setBio] = useLocalStorage(`bio_${user.uid}`, '')
@@ -24,6 +25,13 @@ export function ProfilePage(){
     const cancelEdit = () => {
         setDraft(bio)
         toggleEdit()
+    }
+
+    // logout inside profile
+    const navigate = useNavigate()
+    async function handleLogout() {
+        await logout()
+        navigate('/')
     }
 
     // some styling 
@@ -101,6 +109,10 @@ export function ProfilePage(){
                         </div>    
                     )}
                 </div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
+                {/* Logout button */}
+                <button type = "button" className = "btn-danger" onClick = {handleLogout}>Log out</button>
             </div>
         </>
     )
