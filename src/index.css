@@ -65,7 +65,7 @@ body { margin: 0; }
   width: auto; padding: 0.55rem; border: 1; border-color:#616e7c; border-radius: 4px;
   background: var(--green); color: #fff; font-weight: 600; cursor: pointer;
 }
-.btn:hover {
+.btn:hover:not(:disabled) {
     filter: brightness(1.15);
 }
 .btn-danger {
