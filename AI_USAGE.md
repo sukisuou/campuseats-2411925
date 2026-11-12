@@ -33,3 +33,13 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
     4) how to use hooks and contexts in pages
 - What I kept, changed or rejected, and why: mostly all, learnt each components and their functions, and the `OrdersPage.jsx` displaying with orders details (id, items, ...details)
 - One thing the AI got wrong and how I fixed it: Gemini only suggested flex-end, while the total never aligned with the prices, so i later added marginRight offset of 30px (somehow aligns 🤔) 
+
+## Week 5
+- Tool(s): Google Gemini
+- What I asked for: 
+    1) CSS-related fixes for clunky mechanics
+    2) logic for promotion, openTime, and description states
+- What I kept, changed or rejected, and why: 
+    *accepted*: the styling for CSS and logic for promotion
+    *changed*: learning to understand the logic of `useState` for `isVendorOpen` in `VendorPage.jsx` and `<textarea>` for description in `ProfilePage.jsx`
+- One thing the AI got wrong and how I fixed it: None, mostly written myself, Gemini only helped with bugs and errors

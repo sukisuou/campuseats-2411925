@@ -1,10 +1,11 @@
-import { DISCOUNT } from "./DailySpecial"
+import { DISCOUNT, getPromoDiff } from "./DailySpecial"
 import { useAuth } from '../hooks/useAuth.js'
 
 function MenuItemCard({ item, onAdd }) {
     const { user } = useAuth()
     const isDrink = item.category === 'Drinks'
-    const finalPrice = (isDrink && user) ? item.price * ((100 - DISCOUNT) / 100) : item.price
+    const getDiscount = isDrink && user && (getPromoDiff() > 0)
+    const finalPrice = (getDiscount) ? item.price * ((100 - DISCOUNT) / 100) : item.price
 
     return (
         <article className = "card menu-card">
@@ -12,9 +13,9 @@ function MenuItemCard({ item, onAdd }) {
             <h3>{item.name}</h3>
             <p className = "muted">{item.description}</p>
             <p className = "price">
-                {(isDrink && user) ? (
+                {(getDiscount) ? (
                     <>
-                        <span className="muted" style={{ textDecoration: 'line-through', marginRight: '0.5rem' }}>
+                        <span className = "muted" style = {{ textDecoration: 'line-through', marginRight: '0.5rem' }}>
                             RM {item.price.toFixed(2)}
                         </span>
                         <span>🔥RM {finalPrice.toFixed(2)}</span>

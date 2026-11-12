@@ -8,7 +8,7 @@ function Header() {
     const { user } = useAuth()
 
     return (
-        <header className = "header">
+        <header className = "header" style = {{ position: 'sticky', top: 0, zIndex: 1000}}>
             <h1 className = "logo">
                 CampusEats
             </h1>

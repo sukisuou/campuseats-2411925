@@ -5,22 +5,23 @@ import { Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
 
 export const DISCOUNT = 20
+export function getPromoDiff(){
+    const now = new Date()
+    const promoEndTime = new Date()
+    promoEndTime.setHours(22, 0, 0, 0)  // at 10pm cuz why not
+    return promoEndTime - now
+}
 
 function DailySpecial(){
     const [timeLeft, setTimeLeft] = useState('')
     const [count, setCount] = useState(0)
-    const [isShaking, setIsShaking] = useState(false)
     const [showTada, setShowTada] = useState(false)
 
     const { user } = useAuth()
 
     useEffect(() => {
         function updateCountdown(){
-            const now = new Date()
-            const endOfDay = new Date()
-            endOfDay.setHours(23, 59, 59, 999)  //uhhh 1 milisecond before day ends
-
-            const diff = endOfDay - now
+            const diff = getPromoDiff()
             if(diff <= 0) { //check if the time's still before the end of day
                 setTimeLeft('Ended')
                 return
@@ -65,16 +66,12 @@ function DailySpecial(){
     }
 
     const buttonHype = () => {
-        setCount(prev => {
-            const next = prev + 1
-            if(next > 0 && next % 100 === 0){
-                setShowTada(true)
-                setTimeout(() => setShowTada(false), 1600)
-            }
-            return next
-        })
-        setIsShaking(true)
-        setTimeout(() => setIsShaking(false), 150)
+        const next = count + 1 
+        setCount(next)
+        if(next > 0 && next % 100 === 0){
+            setShowTada(true)
+            setTimeout(() => setShowTada(false), 1600)
+        }
     }
 
     return (
@@ -102,8 +99,17 @@ function DailySpecial(){
                         <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
                         <div>
                             🎉 Today's special for <em>{user.displayName || user.email}</em>!{' '}
-                            <strong>{DISCOUNT}</strong>% off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
-                            Click to hype it up!
+                            { timeLeft !== 'Ended' ? (
+                                <span>
+                                    <strong>{DISCOUNT}</strong>% off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉 
+                                    Click to hype it up!
+                                </span>
+                            ) : (
+                                <span>
+                                    <strong>Promotion has ended.</strong>{' '}
+                                    Hype it up anyway!
+                                </span>
+                            )}
                             <button
                                 className = "btn_2"
                                 key = {count}
@@ -114,7 +120,7 @@ function DailySpecial(){
                     </div>
                 ) : (
                     <div>
-                        <Link to="/login">Log in</Link> to see today's special
+                        <Link to = "/login">Log in</Link> to see today's special.
                     </div>
                 )}
             </div>
