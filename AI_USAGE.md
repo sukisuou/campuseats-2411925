@@ -42,4 +42,5 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 - What I kept, changed or rejected, and why: 
     *accepted*: the styling for CSS and logic for promotion
     *changed*: learning to understand the logic of `useState` for `isVendorOpen` in `VendorPage.jsx` and `<textarea>` for description in `ProfilePage.jsx`
+    *rejected*: creating a separate `utils/promo.js` file and kept `getPromoDiff()` directly inside DailySpecial.jsx to avoid extra files
 - One thing the AI got wrong and how I fixed it: None, mostly written myself, Gemini only helped with bugs and errors
