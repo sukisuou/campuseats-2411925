@@ -65,6 +65,9 @@ body { margin: 0; }
   width: auto; padding: 0.55rem; border: 1; border-color:#616e7c; border-radius: 4px;
   background: var(--green); color: #fff; font-weight: 600; cursor: pointer;
 }
+.btn:hover {
+    filter: brightness(1.15);
+}
 .btn-danger {
   background-color: #fee2e2;
   color: #dc2626;
@@ -76,7 +79,6 @@ body { margin: 0; }
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 }
-
 .btn-danger:hover {
   background-color: #dc2626;
   color: #ffffff;
@@ -89,7 +91,7 @@ body { margin: 0; }
 /* Week 2 additions */
 .vendor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
 button.card { font: inherit; color: inherit; text-align: left; border: 2px solid transparent; cursor: pointer; width: 100%; }
-button.card:hover { border-color: var(--green); }
+button.card:hover { border-color: color-mix(in srgb, var(--green) 80%, white); }
 .vendor-card.selected { border-color: var(--green); }
 .card h3 { font-size: 1.05rem; }
 .order-card {
@@ -127,6 +129,12 @@ start; }
 .form input, .form select { padding: 0.5rem; border: 1px solid #c5cbd3; border-radius: 8px; font: inherit; }
 .field-error { color: #b3261e; font-size: 0.85rem; margin: 0; }
 .error { border-left: 4px solid #b3261e; }
+
+.auth-page {
+  max-width: 420px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
 
 /* my own thingy thingy */
 @keyframes buttonShake {

@@ -25,6 +25,9 @@ export function VendorPage(){
 
     return (
         <section>
+            <Link to = "/" className = "link btn" style = {{ display: 'inline-flex', width: 'fit-content', textDecoration: 'none' }}>
+                {"< Back"}
+            </Link>
             <h2 className = "section-title">{vendor.name}'s Menu</h2>
             <MenuList items = {vendor.menu} />
         </section>

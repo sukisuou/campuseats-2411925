@@ -1,6 +1,8 @@
 // 241192[5] - Daily special with countdown
 
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
+import { useAuth } from '../hooks/useAuth.js'
 
 export const DISCOUNT = 20
 
@@ -9,6 +11,8 @@ function DailySpecial(){
     const [count, setCount] = useState(0)
     const [isShaking, setIsShaking] = useState(false)
     const [showTada, setShowTada] = useState(false)
+
+    const { user } = useAuth()
 
     useEffect(() => {
         function updateCountdown(){
@@ -93,21 +97,32 @@ function DailySpecial(){
                     🔥 FYEEEE! 🔥
                 </div>
             )}
-            <div className = "card" style={card_style}>
-                <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
-                <div>
-                    🎉 Daily Special: <strong>{DISCOUNT}%</strong> off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
-                    Click to hype it up!
-                    <button
-                        className = "btn_2"
-                        key = {count}
-                        style = {button_style} 
-                        onClick = {buttonHype}
-                    >yooooooo ({count})</button>
-                </div>
+            <div>
+                {user ? (
+                    <div className = "card" style={card_style}>
+                        <img src = "/waguri.gif" alt = "waguri" style = {waguri_style}/>
+                        <div>
+                            🎉 Today's special for <em>{user.displayName || user.email}</em>!{' '}
+                            <strong>{DISCOUNT}</strong>% off all drinks! Ends in: <strong>{timeLeft}</strong> 🎉
+                            Click to hype it up!
+                            <button
+                                className = "btn_2"
+                                key = {count}
+                                style = {button_style} 
+                                onClick = {buttonHype}
+                            >yooooooo ({count})</button>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <Link to="/login">Log in</Link> to see today's special
+                    </div>
+                )}
             </div>
         </>
     )
 }
 
 export default DailySpecial
+
+// to-do
